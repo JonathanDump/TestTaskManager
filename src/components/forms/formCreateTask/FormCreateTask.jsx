@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { createTask } from "../../../redux/slices/tasks";
 
 const formStateDefaultValues = {
-  name: null,
+  name: "",
   description: "",
   createdBy: "",
   deadline: "",
@@ -39,7 +39,7 @@ const FormCreateTask = () => {
     <div className={cl.formCreateTask}>
       {!isOpen && (
         <button className={cl.createButton} onClick={handleCreateButtonClick}>
-          Create Task
+          Add Task
         </button>
       )}
       {isOpen && (

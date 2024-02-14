@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
 import cl from "./Task.module.scss";
-import { setStatus } from "../../redux/slices/tasks";
+import { deleteTask, setStatus } from "../../redux/slices/tasks";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Task = ({ name, description, createdBy, deadline, status, _id }) => {
   const statusSelectRef = useRef();
@@ -11,13 +12,21 @@ const Task = ({ name, description, createdBy, deadline, status, _id }) => {
     dispatch(setStatus({ _id, status: statusSelectRef.current.value }));
   };
 
+  const handleDeleteClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(deleteTask({ _id }));
+  };
+
   return (
     <div className={cl.task}>
       <div className={cl.main}>
-        <div className={cl.info}>
-          <div className={cl.name}>{name}</div>
-          <div className={cl.description}>{description}</div>
-        </div>
+        <Link to={`/${_id}`} className={cl.link}>
+          <div className={cl.info}>
+            <div className={cl.name}>{name}</div>
+            <div className={cl.description}>{description}</div>
+          </div>
+        </Link>
 
         <div className={cl.meta}>
           <div className={cl.wrapper}>
@@ -49,7 +58,9 @@ const Task = ({ name, description, createdBy, deadline, status, _id }) => {
         </div>
       </div>
       <div className={cl.actions}>
-        <button className={cl.delete}>Delete</button>
+        <button className={cl.delete} onClick={handleDeleteClick}>
+          Delete
+        </button>
         <button className={cl.edit}>Edit</button>
       </div>
     </div>

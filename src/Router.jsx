@@ -13,6 +13,7 @@ export const Router = () => {
     {
       path: "/:taskId",
       element: <TaskRoute />,
+      errorElement: <Error />,
     },
   ]);
   return <RouterProvider router={router} />;
