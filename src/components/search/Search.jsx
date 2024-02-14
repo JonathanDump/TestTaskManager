@@ -1,5 +1,6 @@
 import { useState } from "react";
 import cl from "./Search.module.scss";
+import formCl from "/src/scss/formCl.module.scss";
 
 const Search = ({ tasks, setTasks }) => {
   const [formState, setFormState] = useState({ filter: "name", input: "" });
@@ -22,29 +23,28 @@ const Search = ({ tasks, setTasks }) => {
 
   return (
     <div className={cl.search}>
-      <form action="">
-        <div className={cl.inputContainer}>
-          <label htmlFor="filter">Search by</label>
-          <select
-            name="filter"
-            id="filter"
-            value={formState.filter}
-            onChange={handleChange}
-          >
-            <option value="name">Name</option>
-            <option value="createdBy">Created By</option>
-            <option value="deadline">Deadline</option>
-            <option value="status">Status</option>
-          </select>
-        </div>
-
-        <input
-          type="text"
-          name="input"
-          value={formState.input}
+      <div className={formCl.inputContainer}>
+        <label htmlFor="filter">Search by</label>
+        <select
+          name="filter"
+          id="filter"
+          value={formState.filter}
           onChange={handleChange}
-        />
-      </form>
+        >
+          <option value="name">Name</option>
+          <option value="createdBy">Created By</option>
+          <option value="deadline">Deadline</option>
+          <option value="status">Status</option>
+        </select>
+      </div>
+
+      <input
+        type="text"
+        name="input"
+        placeholder="Search"
+        value={formState.input}
+        onChange={handleChange}
+      />
     </div>
   );
 };

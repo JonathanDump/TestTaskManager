@@ -1,4 +1,52 @@
-.link {
-  text-decoration: none;
-  color: black;
+@import "/src/scss/variables.scss";
+
+.task {
+  @extend %task-container;
+
+  .link {
+    text-decoration: none;
+    color: black;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    border-bottom: $border;
+    padding-bottom: 8px;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .info,
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .wrapper {
+      @extend %key-value;
+      .title {
+        max-width: 100px;
+        width: 100%;
+      }
+    }
+  }
+
+  .info {
+    border-bottom: $border;
+    padding-bottom: 16px;
+  }
+
+  .meta {
+    gap: 4px;
+  }
+}
+
+.isEdit {
+  border-style: dashed;
 }

@@ -1,0 +1,24 @@
+$border: 1px solid black;
+$border-radius: 18px;
+
+$color-main: black;
+$background-color-main: white;
+
+$padding-task: 8px 16px;
+
+%task-container {
+  max-width: 700px;
+  width: 100%;
+  border: $border;
+  border-radius: $border-radius;
+  padding: $padding-task;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+%key-value {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

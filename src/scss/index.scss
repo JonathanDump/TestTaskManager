@@ -1,1 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
 @import "./normalize.css";
+@import "./variables.scss";
+
+html {
+  font-family: "Exo 2", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  padding: 2vw;
+}
+
+input,
+select,
+button,
+textarea {
+  background-color: transparent;
+  border: $border;
+  border-radius: $border-radius;
+  line-height: 1.5rem;
+  padding: 2px 8px;
+}
+
+button {
+  min-width: 100px;
+  &:hover {
+    color: $background-color-main;
+    background-color: $color-main;
+  }
+}

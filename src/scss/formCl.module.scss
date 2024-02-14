@@ -1,0 +1,25 @@
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  label {
+    max-width: 100px;
+    width: 100%;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  input,
+  textarea {
+    width: 100%;
+  }
+
+  input[type="date"] {
+    width: fit-content;
+  }
+}

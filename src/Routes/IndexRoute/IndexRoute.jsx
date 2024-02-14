@@ -16,13 +16,13 @@ function IndexRoute() {
   }, [allTasks]);
 
   return (
-    <div className={cl.indexRoute}>
+    <main className={cl.indexRoute}>
       <Search tasks={allTasks} setTasks={setTasks} />
       <FormCreateTask />
       {tasks.map((task) => (
         <Task {...task} key={task._id} />
       ))}
-    </div>
+    </main>
   );
 }
 

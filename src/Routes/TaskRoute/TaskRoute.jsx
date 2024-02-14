@@ -12,7 +12,11 @@ const TaskRoute = () => {
     throw new Error("Something went wrong or task doesn't exist");
   }
 
-  return <Task {...task} />;
+  return (
+    <main>
+      <Task {...task} />
+    </main>
+  );
 };
 
 export default TaskRoute;

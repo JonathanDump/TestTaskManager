@@ -1,0 +1,23 @@
+@import "/src/scss/variables.scss";
+
+.createTask {
+  @extend %task-container;
+
+  .createButton {
+    color: $background-color-main;
+    background-color: $color-main;
+
+    &:hover {
+      color: $color-main;
+      background-color: $background-color-main;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    border-top: $border;
+    padding-top: 8px;
+  }
+}

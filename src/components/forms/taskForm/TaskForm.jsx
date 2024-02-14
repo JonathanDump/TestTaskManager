@@ -1,5 +1,6 @@
 import { useState } from "react";
-import cl from "./TaskFor.module.scss";
+import cl from "./TaskForm.module.scss";
+import formCl from "/src/scss/formCl.module.scss";
 import { taskFormDefaultValues } from "../taskFormDefaultValues";
 
 const TaskForm = ({ id, handleFormSubmit, formValues }) => {
@@ -20,7 +21,7 @@ const TaskForm = ({ id, handleFormSubmit, formValues }) => {
 
   return (
     <form id={id} className={cl.form} onSubmit={handleSubmit}>
-      <div className={cl.inputContainer}>
+      <div className={formCl.inputContainer}>
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -32,19 +33,20 @@ const TaskForm = ({ id, handleFormSubmit, formValues }) => {
         />
       </div>
 
-      <div className={cl.inputContainer}>
+      <div className={formCl.inputContainer}>
         <label htmlFor="description">Description</label>
-        <input
+        <textarea
           type="text"
           id="description"
           name="description"
+          rows={4}
           value={formState.description}
           required={true}
           onChange={handleInputChange}
         />
       </div>
 
-      <div className={cl.inputContainer}>
+      <div className={formCl.inputContainer}>
         <label htmlFor="createdBy">Created By</label>
         <input
           type="text"
@@ -56,7 +58,7 @@ const TaskForm = ({ id, handleFormSubmit, formValues }) => {
         />
       </div>
 
-      <div className={cl.inputContainer}>
+      <div className={formCl.inputContainer}>
         <label htmlFor="deadline">Deadline</label>
         <input
           type="date"
@@ -67,7 +69,7 @@ const TaskForm = ({ id, handleFormSubmit, formValues }) => {
         />
       </div>
 
-      <div className={cl.inputContainer}>
+      <div className={formCl.inputContainer}>
         <label htmlFor="status">Status</label>
         <select
           name="status"
