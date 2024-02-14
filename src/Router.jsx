@@ -9,12 +9,10 @@ export const Router = () => {
       path: "/",
       element: <IndexRoute />,
       errorElement: <Error />,
-      children: [
-        {
-          path: "/:taskId",
-          element: <TaskRoute />,
-        },
-      ],
+    },
+    {
+      path: "/:taskId",
+      element: <TaskRoute />,
     },
   ]);
   return <RouterProvider router={router} />;

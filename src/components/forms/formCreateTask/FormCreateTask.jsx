@@ -1,16 +1,22 @@
 import { useState } from "react";
 import cl from "./FormCreateTask.module.scss";
+import { useDispatch } from "react-redux";
+import { createTask } from "../../../redux/slices/tasks";
+
+const formStateDefaultValues = {
+  name: null,
+  description: "",
+  createdBy: "",
+  deadline: "",
+  status: "readyToGo",
+};
 
 const FormCreateTask = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [formState, setFormState] = useState({
-    name: "",
-    description: "",
-    createdBy: "",
-    deadline: "",
-    status: "readyToGo",
-  });
+  const [formState, setFormState] = useState(formStateDefaultValues);
+
+  const dispatch = useDispatch();
 
   const handleCreateButtonClick = () => {
     setIsOpen(true);
@@ -23,12 +29,10 @@ const FormCreateTask = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    dispatch(createTask({ ...formState, _id: crypto.randomUUID() }));
 
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
-    tasks.push(formState);
-
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    setIsOpen(false);
+    setFormState(formStateDefaultValues);
   };
 
   return (
@@ -92,7 +96,7 @@ const FormCreateTask = () => {
             <select
               name="status"
               id="status"
-              defaultValue={formState.status}
+              value={formState.status}
               onChange={handleInputChange}
             >
               <option value="readyToGo">Ready to go</option>
