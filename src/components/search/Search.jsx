@@ -34,6 +34,7 @@ const Search = ({ tasks, setTasks }) => {
             <option value="name">Name</option>
             <option value="createdBy">Created By</option>
             <option value="deadline">Deadline</option>
+            <option value="status">Status</option>
           </select>
         </div>
 
@@ -53,5 +54,9 @@ export default Search;
 function searchTasks({ tasks, setTasks, formState }) {
   const { input, filter } = formState;
 
-  setTasks(tasks.filter((task) => task[filter].includes(input)));
+  setTasks(
+    tasks.filter((task) =>
+      task[filter].toLowerCase().includes(input.toLowerCase())
+    )
+  );
 }
