@@ -22,11 +22,25 @@ export const tasksSlice = createSlice({
       localStorage.setItem("tasks", JSON.stringify(state));
       return state;
     },
+
+    editTask: (state, action) => {
+      const updatedState = state.map((task) => {
+        if (task._id === action.payload._id) {
+          return action.payload;
+        }
+        return task;
+      });
+
+      localStorage.setItem("tasks", JSON.stringify(updatedState));
+
+      return updatedState;
+    },
   },
 });
 
 export const selectTasks = (state) => state.tasks;
 
-export const { createTask, setStatus, deleteTask } = tasksSlice.actions;
+export const { createTask, setStatus, deleteTask, editTask } =
+  tasksSlice.actions;
 
 export default tasksSlice.reducer;
