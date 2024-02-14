@@ -1,7 +1,12 @@
-import "./IndexRoute.module.scss";
+import FormCreateTask from "/src/components/forms/formCreateTask/FormCreateTask";
+import cl from "./IndexRoute.module.scss";
 
 function IndexRoute() {
-  return <></>;
+  return (
+    <div className={cl.indexRoute}>
+      <FormCreateTask />
+    </div>
+  );
 }
 
 export default IndexRoute;
