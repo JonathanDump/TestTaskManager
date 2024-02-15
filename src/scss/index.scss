@@ -23,10 +23,12 @@ textarea {
   border-radius: $border-radius;
   line-height: 1.5rem;
   padding: 2px 8px;
+  transition: $transition;
 }
 
 button {
   min-width: 100px;
+  cursor: pointer;
   &:hover {
     color: $background-color-main;
     background-color: $color-main;

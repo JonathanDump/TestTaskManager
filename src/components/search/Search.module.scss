@@ -1,4 +1,7 @@
 .search {
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
+  align-self: center;
+  justify-content: center;
 }

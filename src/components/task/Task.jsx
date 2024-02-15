@@ -14,19 +14,32 @@ const Task = (props) => {
   const { taskId } = useParams();
   const navigate = useNavigate();
 
+  const taskRef = useRef();
   const statusSelectRef = useRef();
   const dispatch = useDispatch();
 
   const handleInfoClick = () => {
-    console.log("itemId", taskId);
     if (taskId) {
-      console.log("return");
-
       return;
     }
 
-    console.log("navogate");
     navigate(`/${_id}`);
+  };
+
+  const handleMousEenter = () => {
+    if (isEdit || taskId) {
+      return;
+    }
+
+    taskRef.current.classList.add(cl.hover);
+  };
+
+  const handleMouseleave = () => {
+    if (isEdit || taskId) {
+      return;
+    }
+
+    taskRef.current.classList.remove(cl.hover);
   };
 
   const handleStatusChange = () => {
@@ -67,7 +80,10 @@ const Task = (props) => {
         <button className={cl.action} onClick={toggleEdit}>
           Edit
         </button>
-        <button className={cl.action} onClick={handleDeleteClick}>
+        <button
+          className={getValidClassNames(cl.action, cl.delete)}
+          onClick={handleDeleteClick}
+        >
           Delete
         </button>
       </>
@@ -88,9 +104,11 @@ const Task = (props) => {
     return (
       <>
         <div
-          className={cl.info}
-          onClick={handleInfoClick}
+          className={getValidClassNames(cl.info, taskId && cl.disable)}
           style={{ cursor: taskId ? "default" : "pointer" }}
+          onClick={handleInfoClick}
+          onMouseEnter={handleMousEenter}
+          onMouseLeave={handleMouseleave}
         >
           <div className={cl.name}>{name}</div>
           <div className={cl.description}>{description}</div>
@@ -129,7 +147,10 @@ const Task = (props) => {
   };
 
   return (
-    <div className={getValidClassNames(cl.task, isEdit && cl.isEdit)}>
+    <div
+      className={getValidClassNames(cl.task, isEdit && cl.isEdit)}
+      ref={taskRef}
+    >
       <div className={cl.actions}>{getActions()}</div>
       <div className={cl.main}>{getMain()}</div>
     </div>
