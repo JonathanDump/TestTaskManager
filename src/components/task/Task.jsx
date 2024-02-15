@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import TaskForm from "../forms/taskForm/TaskForm";
 import { getValidClassNames } from "../../helpers/getValidClassNames";
+import { reverseDate } from "../../helpers/reverseDate";
 
 const Task = (props) => {
   const { name, description, createdBy, deadline, status, _id } = props;
@@ -123,7 +124,7 @@ const Task = (props) => {
           {deadline && (
             <div className={cl.wrapper}>
               <div className={cl.title}>Deadline:</div>
-              <div className={cl.value}>{deadline}</div>
+              <div className={cl.value}>{reverseDate(deadline)}</div>
             </div>
           )}
 
