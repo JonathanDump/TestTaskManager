@@ -12,7 +12,7 @@ function IndexRoute() {
   const [tasks, setTasks] = useState(allTasks);
 
   useEffect(() => {
-    setTasks(allTasks);
+    setTasks([...allTasks].reverse());
   }, [allTasks]);
 
   return (
